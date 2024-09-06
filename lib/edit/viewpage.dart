@@ -11,7 +11,7 @@ class viewPage extends StatefulWidget {
 }
 
 class _viewPageState extends State<viewPage> {
-  fluq.QuillController _controller = fluq.QuillController.basic();
+  final fluq.QuillController _controller = fluq.QuillController.basic();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _viewPageState extends State<viewPage> {
       resizeToAvoidBottomInset: true,
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: 100.w,
             height: 100.h,
             child: Stack(
@@ -28,11 +28,11 @@ class _viewPageState extends State<viewPage> {
                 Flex(
                   direction: Axis.horizontal,
                   children: [
-                    Expanded(child: IconButton(onPressed: (){},icon:Icon(Iconsax.arrow_left,color: Colors.white,),)),
-                    Expanded(child: TextButton(onPressed: (){
+                    Expanded(child: IconButton(onPressed: (){},icon:const Icon(Iconsax.arrow_left,color: Colors.white,),)),
+                    Expanded(flex: 5,child: TextButton(onPressed: (){
                       showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(1900), lastDate: DateTime(2100));
-                    },child:Text("2023.3.10",style: TextStyle(color: Colors.white),),),flex: 5,),
-                    Expanded(child: IconButton(onPressed: (){},icon: Icon(Icons.edit,color: Colors.white,),))
+                    },child:const Text("2023.3.10",style: TextStyle(color: Colors.white),),),),
+                    Expanded(child: IconButton(onPressed: (){},icon: const Icon(Icons.edit,color: Colors.white,),))
                   ],
                 ),
                 Flex(
@@ -50,12 +50,12 @@ class _viewPageState extends State<viewPage> {
                         ),
                         child: Column(
                           children: [
+                            /*
                             fluq.QuillEditor.basic(
-                              controller: _controller,
-                              autoFocus: false,
-                              focusNode: FocusNode(canRequestFocus: false),
-                              readOnly: true, // true for view only mode
+                              focusNode: FocusNode(canRequestFocus: false), configurations:, // true for view only mode
                             ),
+                            /
+                             */
                             Container(
                               child: GridView(
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -64,7 +64,7 @@ class _viewPageState extends State<viewPage> {
                                     childAspectRatio: 1//宽高比为1时，子widget
                                 ),
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ),
+                                physics: const NeverScrollableScrollPhysics(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ),
                                 children: [
                                   Container(
                                     margin: EdgeInsets.fromLTRB(0, 0, 2.w, 0),
@@ -72,7 +72,7 @@ class _viewPageState extends State<viewPage> {
                                     height: 45.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                           fit: BoxFit.cover,
                                         )
@@ -84,7 +84,7 @@ class _viewPageState extends State<viewPage> {
                                     height: 45.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                           fit: BoxFit.cover,
                                         )
@@ -96,7 +96,7 @@ class _viewPageState extends State<viewPage> {
                                     height: 45.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                           fit: BoxFit.cover,
                                         )
@@ -108,7 +108,7 @@ class _viewPageState extends State<viewPage> {
                                     height: 45.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                           fit: BoxFit.cover,
                                         )
@@ -120,7 +120,7 @@ class _viewPageState extends State<viewPage> {
                                     height: 45.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                           fit: BoxFit.cover,
                                         )
@@ -132,7 +132,7 @@ class _viewPageState extends State<viewPage> {
                                     height: 45.w,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                           fit: BoxFit.cover,
                                         )
@@ -151,7 +151,7 @@ class _viewPageState extends State<viewPage> {
                                         color: Theme.of(context).secondaryHeaderColor,
                                         borderRadius: BorderRadius.circular(10)
                                     ),
-                                    child: Text("我的录音1"),
+                                    child: const Text("我的录音1"),
                                   ),
 
                                 )
@@ -167,7 +167,7 @@ class _viewPageState extends State<viewPage> {
                                         color: Colors.grey.shade300,
                                         borderRadius: BorderRadius.circular(10)
                                     ),
-                                    child: Text("留下新的评论~"),
+                                    child: const Text("留下新的评论~"),
                                   ),
 
                                 )

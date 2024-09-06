@@ -1,7 +1,6 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import '../flutter_heatmap_calendar-1.0.5-self/lib/flutter_heatmap_calendar.dart';
+import 'package:newheartnote/flutter_heatmap_calendar-1.0.5-self/lib/flutter_heatmap_calendar.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -31,7 +30,7 @@ class CalbookPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text("日历本"),
+          title: const Text("日历本"),
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(4.w, 1.h, 4.w, 1.h),
@@ -77,7 +76,7 @@ class CalbookPage extends StatelessWidget {
                       10: Color(0xffFF8B33),
                     },
                     showColorTip: false,
-                    colorTipHelper: [Text("非常不愉快"),Text("非常愉快")],
+                    colorTipHelper: const [Text("非常不愉快"),Text("非常愉快")],
                     onClick: (value) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value.toString())));
                     },
@@ -86,7 +85,7 @@ class CalbookPage extends StatelessWidget {
                 SizedBox(height: 1.h,),
                 ListView(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     Container(
                      margin: EdgeInsets.fromLTRB(0, 1.h,0, 1.h),
@@ -100,7 +99,7 @@ class CalbookPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("2023年9月1日",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.sp),),
-                          Text("今天的天气非常不错，大家都十分的开心，希望明天的天气可以和今天一样继续非常不错！！"),
+                          const Text("今天的天气非常不错，大家都十分的开心，希望明天的天气可以和今天一样继续非常不错！！"),
                           SizedBox(height: 1.h,),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -112,7 +111,7 @@ class CalbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -136,7 +135,7 @@ class CalbookPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("2023年9月1日",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.sp),),
-                          Text("今天的天气非常不错，大家都十分的开心，希望明天的天气可以和今天一样继续非常不错！！"),
+                          const Text("今天的天气非常不错，大家都十分的开心，希望明天的天气可以和今天一样继续非常不错！！"),
                           SizedBox(height: 1.h,),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -148,7 +147,7 @@ class CalbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -172,7 +171,7 @@ class CalbookPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("2023年9月1日",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.sp),),
-                          Text("今天的天气非常不错，大家都十分的开心，希望明天的天气可以和今天一样继续非常不错！！"),
+                          const Text("今天的天气非常不错，大家都十分的开心，希望明天的天气可以和今天一样继续非常不错！！"),
                           SizedBox(height: 1.h,),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -184,7 +183,7 @@ class CalbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )

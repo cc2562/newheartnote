@@ -30,7 +30,7 @@ class MypagePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text("我的"),
+          title: const Text("我的"),
         ),
         body: Container(
           padding: EdgeInsets.fromLTRB(4.w, 1.h , 4.w, 0),
@@ -62,7 +62,7 @@ class MypagePage extends StatelessWidget {
               noteCard(Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       Text("心记"),
                       Icon(Iconsax.add,color: Colors.amber,),
@@ -72,8 +72,8 @@ class MypagePage extends StatelessWidget {
                   Text("密码保护 更多图像 无限标签 录音日记...",style: TextStyle(fontSize: 14.sp),),
                   Row(
                     children: [
-                      TextButton(child: Text("购买Pro版本"),onPressed: (){},),
-                      Text("上新优惠 %30OFF",style: TextStyle(color: Colors.amber),),
+                      TextButton(child: const Text("购买Pro版本"),onPressed: (){},),
+                      const Text("上新优惠 %30OFF",style: TextStyle(color: Colors.amber),),
                     ],
                   )
                 ],
@@ -81,8 +81,8 @@ class MypagePage extends StatelessWidget {
               SizedBox(height: 1.h,),
               noteCard(ListView(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
+                physics: const NeverScrollableScrollPhysics(),
+                children: const [
                   ListTile(
                     leading: Icon(Iconsax.password_check),
                     title: Text("密码保护"),
@@ -114,8 +114,8 @@ class MypagePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(onPressed: (){}, child: Text("用户协议")),
-                  TextButton(onPressed: (){}, child: Text("隐私政策")),
+                  TextButton(onPressed: (){}, child: const Text("用户协议")),
+                  TextButton(onPressed: (){}, child: const Text("隐私政策")),
                 ],
               )
             ],

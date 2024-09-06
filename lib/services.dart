@@ -29,7 +29,7 @@ class Classifier {
   }
 
   void _loadDictionary() async {
-    final vocab = await rootBundle.loadString('$_vocabFile');
+    final vocab = await rootBundle.loadString(_vocabFile);
     var dict = <String, int>{};
     final vocabList = vocab.split('\n');
     for (var i = 0; i < vocabList.length; i++) {

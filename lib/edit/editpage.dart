@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' as fluq;
 import 'package:iconsax/iconsax.dart';
 import 'package:newheartnote/Widgets/normal.dart';
-import 'package:record/record.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class editPage extends StatefulWidget {
@@ -17,10 +16,9 @@ class editPage extends StatefulWidget {
 }
 
 class _editPageState extends State<editPage> {
-  fluq.QuillController _controller = fluq.QuillController.basic();
+  final fluq.QuillController Qcontroller = fluq.QuillController.basic();
   int recordState = 0;
   bool showStartRecord=true;
-  final record = AudioRecorder();
   List pauseResumeIcon=[Iconsax.pause,Iconsax.pause,Iconsax.play];
   @override
   void initState() {
@@ -35,7 +33,7 @@ class _editPageState extends State<editPage> {
         resizeToAvoidBottomInset: true,
         backgroundColor: Theme.of(context).secondaryHeaderColor,
         body: SafeArea(
-          child: Container(
+          child: SizedBox(
               width: 100.w,
               height: 100.h,
               child: Stack(
@@ -46,31 +44,27 @@ class _editPageState extends State<editPage> {
                       Expanded(
                           child: IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Iconsax.arrow_left,
                           color: Colors.white,
                         ),
                       )),
                       Expanded(
+                        flex: 5,
                         child: TextButton(
                           onPressed: () {
-                            showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime(1900),
-                                lastDate: DateTime(2100));
+
                           },
-                          child: Text(
+                          child: const Text(
                             "2023.3.10",
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
-                        flex: 5,
                       ),
                       Expanded(
                           child: IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.check,
                           color: Colors.white,
                         ),
@@ -92,72 +86,7 @@ class _editPageState extends State<editPage> {
                           child: ListView(
                             children: [
                               Container(
-                                child: fluq.QuillEditor(
-                                  placeholder: "记录今天吧~",
-                                  controller: _controller,
-                                  readOnly: false,
-                                  focusNode: FocusNode(),
-                                  scrollController: ScrollController(),
-                                  scrollable: true,
-                                  padding: EdgeInsets.zero,
-                                  autoFocus: true,
-                                  expands: false,
-                                  customStyles: fluq.DefaultStyles(
-                                    paragraph: fluq.DefaultTextBlockStyle(
-                                        const TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          height: 1.15,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        const fluq.VerticalSpacing(16, 0),
-                                        const fluq.VerticalSpacing(0, 0),
-                                        null),
-                                    h1: fluq.DefaultTextBlockStyle(
-                                        const TextStyle(
-                                          fontSize: 36,
-                                          color: Colors.black,
-                                          height: 1.15,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        const fluq.VerticalSpacing(16, 0),
-                                        const fluq.VerticalSpacing(0, 0),
-                                        null),
-                                    h2: fluq.DefaultTextBlockStyle(
-                                        const TextStyle(
-                                          fontSize: 30,
-                                          color: Colors.black,
-                                          height: 1.15,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        const fluq.VerticalSpacing(16, 0),
-                                        const fluq.VerticalSpacing(0, 0),
-                                        null),
-                                    h3: fluq.DefaultTextBlockStyle(
-                                        const TextStyle(
-                                          fontSize: 26,
-                                          color: Colors.black,
-                                          height: 1.15,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        const fluq.VerticalSpacing(16, 0),
-                                        const fluq.VerticalSpacing(0, 0),
-                                        null),
-                                    sizeSmall: const TextStyle(fontSize: 9),
-                                    subscript: const TextStyle(
-                                      fontFamily: 'SF-UI-Display',
-                                      fontFeatures: [FontFeature.subscripts()],
-                                    ),
-                                    superscript: const TextStyle(
-                                      fontFamily: 'SF-UI-Display',
-                                      fontFeatures: [
-                                        FontFeature.superscripts()
-                                      ],
-                                    ),
-                                  ),
-
-                                  // true for view only mode
-                                ),
+                                child: fluq.QuillEditor.basic(configurations: fluq.QuillEditorConfigurations(controller: Qcontroller)),
                               ),
                               SizedBox(
                                 height: 4.h,
@@ -216,48 +145,47 @@ class _editPageState extends State<editPage> {
                             child: Row(
                               children: [
                                 IconButton(
-                                    onPressed: () {}, icon: Icon(Icons.image)),
+                                    onPressed: () {}, icon: const Icon(Icons.image)),
                                 IconButton(
                                     onPressed: () {
+                                      print("11211");
                                       recordTime();
-                                    }, icon: Icon(Icons.tag)),
+                                    }, icon: const Icon(Icons.tag)),
                                 IconButton(
                                     onPressed: () {
                                       SystemChannels.textInput
                                           .invokeMethod('TextInput.hide');
-                                      record.hasPermission();
                                       showModalBottomSheet(
                                           context: context,
                                           builder: (context) {
                                             return recordPage();
                                           });
                                     },
-                                    icon: Icon(Icons.fiber_smart_record)),
-                                fluq.QuillToolbar.basic(
-                                  toolbarIconSize: 6.w,
-                                  controller: _controller,
-                                  showFontFamily: false,
-                                  showFontSize: false,
-                                  showAlignmentButtons: false,
-                                  showLink: true,
-                                  showSearchButton: false,
-                                  showBackgroundColorButton: false,
-                                  showCodeBlock: true,
-                                  showCenterAlignment: false,
-                                  showLeftAlignment: false,
-                                  showRightAlignment: false,
-                                  showSmallButton: false,
-                                  showJustifyAlignment: false,
-                                  showStrikeThrough: false,
-                                  showColorButton: false,
-                                  showSubscript: false,
-                                  showSuperscript: false,
-                                  showIndent: true,
-                                  showInlineCode: false,
-                                  showHeaderStyle: true,
-                                  showListCheck: false,
-                                  showClearFormat: false,
-                                ),
+                                    icon: const Icon(Icons.fiber_smart_record)),
+                                fluq.QuillToolbar(
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: [
+                                        fluq.QuillToolbarHistoryButton(
+                                          isUndo: true,
+                                          controller: Qcontroller,
+                                        ),
+                                        fluq.QuillToolbarHistoryButton(
+                                          isUndo: false,
+                                          controller: Qcontroller,
+                                        ),
+                                        fluq.QuillToolbarToggleCheckListButton(
+                                          controller: Qcontroller,
+                                        ),
+                                        fluq.QuillToolbarToggleStyleButton(
+                                          controller: Qcontroller,
+                                          attribute: fluq.Attribute.blockQuote,
+                                        ),
+                                      ]
+                                    ),
+                                  ),
+                                )
                               ],
                             )),
                       ))
@@ -288,18 +216,10 @@ class _editPageState extends State<editPage> {
               children: [
                 //开始录音
                 Visibility(
+                  visible: showStartRecord,
                   child: IconButton(
                   onPressed: () async {
-                    if (recordState == 0) {
-                      //开始录制
-                      setState(() {
-                        recordState = 1;
-                        showStartRecord=false;
-                      });
-                      await record.start(
-                          const RecordConfig(encoder: AudioEncoder.wav),
-                          path: 'aFullPath/myFile.m4a');
-                    }
+                    //开始录音事件
                   },
                   icon: Icon(
                     Iconsax.microphone_2,
@@ -307,25 +227,14 @@ class _editPageState extends State<editPage> {
                     size: 10.w,
                   ),
                 ),
-                  visible: showStartRecord,
                 ),
                 Visibility(
+                  visible:!showStartRecord,
                   child: Row(
                     children: [
                       IconButton(
                         onPressed: () async {
-                          if (recordState == 1) {
-                            //暂停
-                            setState(() {
-                              recordState = 2;
-                            });
-                            await record.pause();
-                          }else if(recordState==2){
-                            setState(() {
-                              recordState=1;
-                            });
-                            await record.resume();
-                          }
+                          //暂停录音事件
                         },
                         icon: Icon(
                           pauseResumeIcon[recordState],
@@ -335,13 +244,7 @@ class _editPageState extends State<editPage> {
                       ),
                       IconButton(
                         onPressed: () async {
-                          if(await record.isPaused()){
-                            await record.resume();
-                            record.stop();
-                          }else{
-                            record.stop();
-                          }
-                          recordState=0;
+                          //结束录音
                         },
                         icon: Icon(
                           Iconsax.tick_square,
@@ -351,7 +254,6 @@ class _editPageState extends State<editPage> {
                       )
                     ],
                   ),
-                  visible:!showStartRecord,
                 ),
                 SizedBox(
                   width: 1.w,
@@ -369,18 +271,18 @@ class _editPageState extends State<editPage> {
           SizedBox(
             height: 3.h,
           ),
-          Text("单篇日记仅支持添加一篇录音")
+          const Text("单篇日记仅支持添加一篇录音")
         ],
       ),
     );
   }
   String recordTime(){
     int count = 0;
-    const period = const Duration(seconds: 1);
-    print('currentTime='+DateTime.now().toString());
+    const period = Duration(seconds: 1);
+    print('currentTime=${DateTime.now()}');
     Timer.periodic(period, (timer) {
       //到时回调
-      print('afterTimer='+DateTime.now().toString());
+      print('afterTimer=${DateTime.now()}');
       count++;
       if (count >= 5) {
         //取消定时器，避免无限回调

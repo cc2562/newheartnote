@@ -44,6 +44,11 @@ class HeatMapContainer extends StatelessWidget {
             width: size,
             height: size,
             alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: selectedColor,
+              borderRadius:
+                  BorderRadius.all(Radius.circular(borderRadius ?? 5)),
+            ),
             child: (showText ?? true)
                 ? Text(
                     date.day.toString(),
@@ -52,11 +57,6 @@ class HeatMapContainer extends StatelessWidget {
                         fontSize: fontSize),
                   )
                 : null,
-            decoration: BoxDecoration(
-              color: selectedColor,
-              borderRadius:
-                  BorderRadius.all(Radius.circular(borderRadius ?? 5)),
-            ),
           ),
         ),
         onTap: () {

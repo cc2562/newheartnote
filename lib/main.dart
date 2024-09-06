@@ -1,4 +1,3 @@
-import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
         theme: FlexThemeData.light(scheme: FlexScheme.redM3,useMaterial3: true),
         // The Mandy red, dark theme.
         darkTheme: FlexThemeData.dark(scheme: FlexScheme.mandyRed,useMaterial3: true),
-        home: MainPage(),
+        home: const MainPage(),
       );
     }
     );
@@ -58,15 +57,15 @@ class _MainPageState extends State<MainPage> {
   int _selectedTab=0;
   @override
   Widget build(BuildContext context) {
-    PageController mainPageViewController = new PageController();
+    PageController mainPageViewController = PageController();
     mainPageViewController.initialPage;
 
     return Scaffold(
       extendBody: false,
       body: PageView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: mainPageViewController,
-        children: [
+        children: const [
           NotebookPage(),
           HeartbookPage(),
           CalbookPage(),
@@ -82,29 +81,29 @@ class _MainPageState extends State<MainPage> {
         items: [
           /// Home
           SalomonBottomBarItem(
-            icon: Icon(Iconsax.home_2),
-            title: Text("日记本"),
+            icon: const Icon(Iconsax.home_2),
+            title: const Text("日记本"),
             selectedColor: Colors.purple,
           ),
 
           /// Likes
           SalomonBottomBarItem(
-            icon: Icon(Iconsax.smileys4),
-            title: Text("心情本"),
+            icon: const Icon(Iconsax.smileys4),
+            title: const Text("心情本"),
             selectedColor: Colors.pink,
           ),
 
           /// Search
           SalomonBottomBarItem(
-            icon: Icon(Iconsax.calendar),
-            title: Text("日历本"),
+            icon: const Icon(Iconsax.calendar),
+            title: const Text("日历本"),
             selectedColor: Colors.orange,
           ),
 
           /// Profile
           SalomonBottomBarItem(
-            icon: Icon(Iconsax.user),
-            title: Text("我"),
+            icon: const Icon(Iconsax.user),
+            title: const Text("我"),
             selectedColor: Colors.teal,
           ),
         ],

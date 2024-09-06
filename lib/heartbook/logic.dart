@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HeartbookLogic extends GetxController {
   List<Color> gradientColors = [Colors.greenAccent, Colors.yellow];
@@ -71,7 +70,7 @@ class HeartbookLogic extends GetxController {
           color: isTouched ? Theme.of(context).primaryColor : Theme.of(context).secondaryHeaderColor,
           width: width,
           borderSide: isTouched
-              ? BorderSide(color: Colors.green)
+              ? const BorderSide(color: Colors.green)
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: false,
@@ -233,7 +232,7 @@ class HeartbookLogic extends GetxController {
               children: <TextSpan>[
                 TextSpan(
                   text: (rod.toY).toInt().toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,

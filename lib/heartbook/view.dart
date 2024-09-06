@@ -2,7 +2,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import '../services.dart';
 import 'logic.dart';
 
@@ -13,7 +12,7 @@ class HeartbookPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.put(HeartbookLogic());
     late var interpreter;
-    var _classifier = Classifier();
+    var classifier = Classifier();
     return Container(
       width: 100.w,
       height: 100.h,
@@ -31,7 +30,7 @@ class HeartbookPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text("心情本"),
+          title: const Text("心情本"),
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(4.w, 0, 4.w, 0),
@@ -119,7 +118,7 @@ class HeartbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -131,7 +130,7 @@ class HeartbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -143,7 +142,7 @@ class HeartbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -155,7 +154,7 @@ class HeartbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -167,7 +166,7 @@ class HeartbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -179,7 +178,7 @@ class HeartbookPage extends StatelessWidget {
                                   height: 45.w,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                         image: NetworkImage("https://img2.baidu.com/it/u=1448498779,518156696&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1694970000&t=0f2b2f07c50bc01ce7270aaa7cddb98c"),
                                         fit: BoxFit.cover,
                                       )
@@ -190,12 +189,12 @@ class HeartbookPage extends StatelessWidget {
                             Container(
                               width: 100.w,
                               height: 16.h,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                               ),
                               alignment: Alignment.bottomCenter,
                               child: ElevatedButton(
                                 onPressed: (){},
-                                child: Text("查看更多"),
+                                child: const Text("查看更多"),
                               ),
                             ),
                           ],
@@ -204,7 +203,7 @@ class HeartbookPage extends StatelessWidget {
                     )
                 ),
                 SizedBox(height: 2.h,),
-                Row(
+                const Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
