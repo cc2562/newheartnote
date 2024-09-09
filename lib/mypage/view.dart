@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:newheartnote/Widgets/normal.dart';
+import 'package:newheartnote/settings/vip/view.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'logic.dart';
@@ -22,7 +24,7 @@ class MypagePage extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Theme.of(context).secondaryHeaderColor,
-            Theme.of(context).colorScheme.background,
+            Theme.of(context).colorScheme.surface,
           ],
         ),
       ),
@@ -72,7 +74,13 @@ class MypagePage extends StatelessWidget {
                   Text("密码保护 更多图像 无限标签 录音日记...",style: TextStyle(fontSize: 14.sp),),
                   Row(
                     children: [
-                      TextButton(child: const Text("购买Pro版本"),onPressed: (){},),
+                      TextButton(child: const Text("购买Pro版本"),onPressed: (){
+                        showBarModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return VipPage();
+                            });
+                      },),
                       const Text("上新优惠 %30OFF",style: TextStyle(color: Colors.amber),),
                     ],
                   )

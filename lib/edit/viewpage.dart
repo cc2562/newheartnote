@@ -11,7 +11,8 @@ class viewPage extends StatefulWidget {
 }
 
 class _viewPageState extends State<viewPage> {
-  final fluq.QuillController _controller = fluq.QuillController.basic();
+  final fluq.QuillController _controller = fluq.QuillController(document: fluq.Document(), selection: const TextSelection.collapsed(offset: 0),readOnly: false
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -48,19 +49,19 @@ class _viewPageState extends State<viewPage> {
                             borderRadius: BorderRadius.circular(20),
                             color: Theme.of(context).cardColor
                         ),
-                        child: Column(
+                        child: ListView(
                           children: [
-                            /*
-                            fluq.QuillEditor.basic(
-                              focusNode: FocusNode(canRequestFocus: false), configurations:, // true for view only mode
-                            ),
-                            /
-                             */
+                        fluq.QuillEditor.basic(
+                          configurations: fluq.QuillEditorConfigurations(
+                          controller: _controller,
+                          autoFocus: false,
+                        ),
+                        ),
                             Container(
                               child: GridView(
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                     mainAxisSpacing: 1.h,
-                                    crossAxisCount: 2, //横轴三个子widget
+                                    crossAxisCount: 3, //横轴三个子widget
                                     childAspectRatio: 1//宽高比为1时，子widget
                                 ),
                                 shrinkWrap: true,
@@ -142,20 +143,25 @@ class _viewPageState extends State<viewPage> {
                               ),
                             ),
                            SizedBox(height: 1.h,),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child:  Container(
-                                    padding: EdgeInsets.all(3.w),
-                                    decoration: BoxDecoration(
-                                        color: Theme.of(context).secondaryHeaderColor,
-                                        borderRadius: BorderRadius.circular(10)
+                            Container(
+                              padding: EdgeInsets.all(3.w),
+                              decoration: BoxDecoration(
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                  borderRadius: BorderRadius.circular(10)
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child:  Container(
+                                      decoration: BoxDecoration(
+                                          color: Theme.of(context).secondaryHeaderColor,
+                                          borderRadius: BorderRadius.circular(10)
+                                      ),
+                                      child: const Text("我的录音1"),
                                     ),
-                                    child: const Text("我的录音1"),
                                   ),
-
-                                )
-                              ],
+                                ],
+                              ),
                             ),
                             SizedBox(height: 1.h,),
                             Row(

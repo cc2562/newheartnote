@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-Widget noteCard(Widget inwidget,context){
+Widget noteCard(Widget inWidget,context){
   return Container(
     //margin: EdgeInsets.fromLTRB(4.w, 1.h, 4.w, 1.h),
     padding: EdgeInsets.all(4.w),
@@ -10,7 +10,7 @@ Widget noteCard(Widget inwidget,context){
       borderRadius: BorderRadius.circular(20),
       color: Theme.of(context).cardColor,
     ),
-    child: inwidget,
+    child: inWidget,
   );
 }
 

@@ -18,11 +18,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return ResponsiveSizer(
         builder: (context, orientation, screenType)
     {
@@ -36,9 +33,9 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate
         ],
         title: 'Flutter Demo',
-        theme: FlexThemeData.light(scheme: FlexScheme.redM3,useMaterial3: true),
+        theme: FlexThemeData.light(scheme: FlexScheme.deepPurple,useMaterial3: true),
         // The Mandy red, dark theme.
-        darkTheme: FlexThemeData.dark(scheme: FlexScheme.mandyRed,useMaterial3: true),
+        darkTheme: FlexThemeData.dark(scheme: FlexScheme.deepPurple,useMaterial3: true),
         home: const MainPage(),
       );
     }
@@ -59,7 +56,6 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     PageController mainPageViewController = PageController();
     mainPageViewController.initialPage;
-
     return Scaffold(
       extendBody: false,
       body: PageView(

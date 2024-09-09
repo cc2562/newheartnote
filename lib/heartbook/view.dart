@@ -2,7 +2,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import '../services.dart';
 import 'logic.dart';
 
 class HeartbookPage extends StatelessWidget {
@@ -12,7 +11,6 @@ class HeartbookPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.put(HeartbookLogic());
     late var interpreter;
-    var classifier = Classifier();
     return Container(
       width: 100.w,
       height: 100.h,
@@ -22,7 +20,7 @@ class HeartbookPage extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Theme.of(context).secondaryHeaderColor,
-            Theme.of(context).colorScheme.background,
+            Theme.of(context).colorScheme.surface,
           ],
         ),
       ),
