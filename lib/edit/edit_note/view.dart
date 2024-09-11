@@ -5,10 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:newheartnote/edit/choose_feeling/logic.dart';
+import 'package:newheartnote/edit/choose_feeling/view.dart';
 import 'package:newheartnote/edit/choose_weather/view.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:flutter_quill/flutter_quill.dart' as fluq;
 import '../../Widgets/normal.dart';
+import '../choose_weather/logic.dart';
 import 'logic.dart';
 
 class EditNotePage extends StatelessWidget {
@@ -100,7 +103,16 @@ class EditNotePage extends StatelessWidget {
                                       width: 1.w,
                                     ),
                                     TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          SystemChannels.textInput
+                                              .invokeMethod('TextInput.hide');
+                                          showBarModalBottomSheet(
+                                              expand: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return ChooseFeelingPage();
+                                              });
+                                        },
                                         child: Text(
                                           "选择心情",
                                           style: TextStyle(
@@ -209,6 +221,10 @@ class EditNotePage extends StatelessWidget {
           Get.back();
           Get.delete<EditNotePage>();
           Get.delete<EditNoteLogic>();
+          Get.delete<ChooseFeelingPage>();
+          Get.delete<ChooseWeatherPage>();
+          Get.delete<ChooseFeelingLogic>();
+          Get.delete<ChooseWeatherLogic>();
         }
       },
     );

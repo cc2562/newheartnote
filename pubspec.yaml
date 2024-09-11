@@ -55,6 +55,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   flutter_animate: ^4.5.0
   weather_icons: ^3.0.0
+  flutter_xlider: ^3.5.0
 
 dev_dependencies:
   flutter_test:
@@ -80,8 +81,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - aimodel/text_classification.tflite
-    - aimodel/text_classification_vocab.txt
+    - lib/image/feeling/
+    - lib/image/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
