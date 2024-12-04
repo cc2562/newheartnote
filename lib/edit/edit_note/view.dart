@@ -198,12 +198,29 @@ class EditNotePage extends StatelessWidget {
                                               isUndo: false,
                                               controller: logic.Qcontroller,
                                             ),
+
                                             fluq.QuillToolbarToggleCheckListButton(
                                               controller: logic.Qcontroller,
                                             ),
                                             fluq.QuillToolbarToggleStyleButton(
                                               controller: logic.Qcontroller,
                                               attribute: fluq.Attribute.blockQuote,
+                                            ),
+                                            fluq.QuillToolbarSelectHeaderStyleButtons(
+                                              controller: logic.Qcontroller,
+                                              options: fluq.QuillToolbarSelectHeaderStyleButtonsOptions(
+                                                attributes: [
+                                                  fluq.Attribute.header,
+                                                  fluq.Attribute.h1,
+                                                  fluq.Attribute.h2
+                                                ],
+                                                iconTheme: const fluq.QuillIconTheme(
+
+                                                  iconButtonSelectedData: fluq.IconButtonData(
+                                                    color: Colors.white
+                                                  )
+                                                )
+                                              ),
                                             ),
                                           ]
                                       ),
@@ -244,7 +261,9 @@ class EditNotePage extends StatelessWidget {
             SizedBox(
               height: 3.h,
             ),
-            Container(
+            Visibility(
+              visible: !logic.hasRecord.value,
+              child: Container(
               padding: EdgeInsets.fromLTRB(1.w, 0, 1.w, 0),
               width: 100.w,
               height: 10.h,
@@ -312,9 +331,11 @@ class EditNotePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 2.h,
             ),
+            SizedBox(
+              height: logic.hasRecord.value?0:2.h,
+            ),
+            //录音内容
             Visibility(
               visible: logic.hasRecord.value,
               child: Container(
@@ -332,11 +353,17 @@ class EditNotePage extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () async {
-                            //暂停录音事件
-
+                            //播放和暂停
+                            if(logic.playingState.value == 0){
+                              logic.startPlay();
+                            }else if(logic.playingState.value == 1){
+                              logic.pausePlay();
+                            }else{
+                              logic.resumePlay();
+                            }
                           },
                           icon: Icon(
-                            logic.pauseResumeIcon[logic.recordState.value],
+                            logic.playingIcon[logic.playingState.value],
                             color: Theme.of(context).primaryColor,
                             size: 10.w,
                           ),
@@ -353,14 +380,14 @@ class EditNotePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "今天的美好录音",
+                            logic.hintName,
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 18.sp),
                           ),
                           Text(
-                            "20 S",
+                            logic.playingState==1?logic.playDuration.toString()+"s/"+logic.endTime.value.toString()+"s":logic.playingState==0?logic.endTime.value.toString()+"s":logic.playDuration.toString()+"s/"+logic.endTime.value.toString()+"s",
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.w700,
@@ -372,8 +399,8 @@ class EditNotePage extends StatelessWidget {
 
                     IconButton(
                       onPressed: () async {
-                        //结束录音
-
+                       logic.delRecord();
+                      //删除录音
                       },
                       icon: Icon(
                         Iconsax.play_remove,
